@@ -12,7 +12,7 @@ from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 import dash
 
-from app import app
+from app import app, server
 
 from apps import page1, page2, page3, home
 
