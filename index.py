@@ -16,6 +16,8 @@ from app import app, server
 
 from apps import page1, page2, page3, home
 
+server = app.server
+
 dropdown = dbc.DropdownMenu(
     children=[
         dbc.DropdownMenuItem("Home", href="/home"),
