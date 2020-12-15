@@ -64,9 +64,6 @@ layout = html.Div([
                     , width=4, className="mb-4")
         ], className="mb-5"),
 
-        html.A("Get the full code of app on my github repositary",
-               href="https://github.com/Ludo-R/brief-09-12-wheelOfEmotions")
-
     ], className="mb-5")
 
 ])
