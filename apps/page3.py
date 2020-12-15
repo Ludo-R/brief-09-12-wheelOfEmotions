@@ -25,6 +25,8 @@ from app import app
 # ---------------------------------------------------
 # - Code -
 
+nltk.download('stopwords')
+
 df = pd.read_csv("data/emotion_final.csv")
 stopwords = nltk.corpus.stopwords.words('english')
 
