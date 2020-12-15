@@ -116,7 +116,6 @@ tab4_content2 = dbc.Row([html.H4(children='KNNeighbor', className="mt-4"),
             ])
 # ------
 tab5_content2 = dbc.Row([html.H4(children='Decision Tree', className="mt-4"),
-
             dash_table.DataTable(id='container-button-timestamp',
             data=res5.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in res5.columns],
