@@ -57,7 +57,7 @@ res5 = print_table(res5)
 
 #-----------------------------------------
 # - Tabs - 
-tab1_content2 = dbc.Row([html.H4(children='Logistic Regression'),
+tab1_content2 = dbc.Row([html.H4(children='Logistic Regression', className="mt-4"),
 
             dash_table.DataTable(id='container-button-timestamp',
             data=res1.to_dict('records'),
@@ -77,7 +77,7 @@ tab1_content2 = dbc.Row([html.H4(children='Logistic Regression'),
             html.H6(children='blablablablablablabla', className="mt-4"),
             ])
 # ------
-tab3_content2 = dbc.Row([html.H4(children='Stochastic Gradient Descent'),
+tab3_content2 = dbc.Row([html.H4(children='Stochastic Gradient Descent', className="mt-4"),
 
             dash_table.DataTable(id='container-button-timestamp',
             data=res3.to_dict('records'),
@@ -96,7 +96,7 @@ tab3_content2 = dbc.Row([html.H4(children='Stochastic Gradient Descent'),
             html.H6(children='blablablablablablabla', className="mt-4"),
             ])
 # ------
-tab4_content2 = dbc.Row([html.H4(children='KNNeighbor'),
+tab4_content2 = dbc.Row([html.H4(children='KNNeighbor', className="mt-4"),
 
             dash_table.DataTable(id='container-button-timestamp',
             data=res4.to_dict('records'),
@@ -115,7 +115,7 @@ tab4_content2 = dbc.Row([html.H4(children='KNNeighbor'),
             html.H6(children='blablablablablablabla', className="mt-4"),
             ])
 # ------
-tab5_content2 = dbc.Row([html.H4(children='Decision Tree'),
+tab5_content2 = dbc.Row([html.H4(children='Decision Tree', className="mt-4"),
 
             dash_table.DataTable(id='container-button-timestamp',
             data=res5.to_dict('records'),
