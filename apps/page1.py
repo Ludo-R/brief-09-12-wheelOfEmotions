@@ -108,7 +108,8 @@ tab1_content = dash_table.DataTable(id='container-button-timestamp',
             style_cell={
                 'backgroundColor': 'rgb(50, 50, 50)',
                 'color': 'white',
-                'textAlign':'left'
+                'textAlign':'left',
+                'padding-left':'5px'
                 }
             )
 
@@ -123,8 +124,9 @@ tab2_content = dash_table.DataTable(id='container-button-timestamp',
             style_cell={
                 'backgroundColor': 'rgb(50, 50, 50)',
                 'color': 'white',
-                'textAlign':'left'
-                }
+                'textAlign':'left',
+             },
+            css=[ {'selector': '.row', 'rule': 'margin: 0'}]
             )
 
 # ---------------------------------------------------
