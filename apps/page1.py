@@ -57,6 +57,11 @@ freq = subsample(wrank)
 r = np.arange(len(freq))
 a = [i for i in range(100)]
 fig3 = px.bar(x=r, y=freq)
+fig3.update_traces(
+    marker_color='#810303', 
+    marker_line_color='black',
+    marker_line_width=1.5
+)
 fig3.update_layout(
     xaxis = dict(
         tickmode = 'array',
@@ -66,6 +71,7 @@ fig3.update_layout(
     title="Frequency of word in Kaggel Data",
     yaxis = dict(
         title_text="Frequency",))
+
 
 # - Figure 4 -
 
@@ -84,6 +90,11 @@ freq = subsample(wrank)
 r = np.arange(len(freq))
 a = [i for i in range(100)]
 fig4 = px.bar(x=r, y=freq)
+fig4.update_traces(
+    marker_color='#11337E', 
+    marker_line_color='black',
+    marker_line_width=1.5
+)
 fig4.update_layout(
     xaxis = dict(
         tickmode = 'array',

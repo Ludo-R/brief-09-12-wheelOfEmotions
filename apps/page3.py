@@ -7,18 +7,15 @@ Created on Mon Dec 14 12:12:38 2020
 """
 
 import pandas as pd
-
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
-
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import SGDClassifier
 import nltk
-
 from app import app
 
 # ---------------------------------------------------
