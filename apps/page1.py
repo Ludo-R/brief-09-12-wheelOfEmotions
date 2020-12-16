@@ -96,7 +96,31 @@ fig4.update_layout(
     yaxis = dict(
     title_text="Frequency",))
 
+# - Figure 5 -
+
+fig5 = go.Figure(data=[go.Pie(labels=df.Emotion.unique(),
+                             values=df.groupby('Emotion').Text.nunique(), 
+                             textinfo='label+percent',
+                            )],
+                layout ={
+                   'title':'Proportion Emotion for Kaggle set',
+                   'font_color':'grey'
+               })
+
+# - Figure 6 -
+
+fig6 = go.Figure(data=[go.Pie(labels=df2.sentiment.unique(),
+                             values=df2.groupby('sentiment').content.nunique(), 
+                             textinfo='label+percent',
+                            )],
+                layout ={
+                   'title':'Proportion Emotion for World set',
+                   'font_color':'grey'
+               })
+
+# ---------------------------------------------------
 # - Tabs -
+
 tab1_content = dash_table.DataTable(id='container-button-timestamp',
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
@@ -158,6 +182,13 @@ layout = html.Div([
             ]),
         dbc.Row([
                 dbc.Col(html.H6(children='We can observe that the Happy and Sadness emotions are very present in the first dataset, in the second they are rather in the middle, it is neutral and worry which are dominant. Two emotions that do not exist in the first data set. The two datasets are distributed very differently'), className="mb-4")
+            ]),
+        dbc.Row([
+                dbc.Col(html.H4(children='Lets see the proportion'), className="mb-1")
+            ]),
+        dbc.Row([
+                dbc.Col(dcc.Graph(id='graph-5',figure=fig5),),
+                dbc.Col(dcc.Graph(id='graph-6',figure=fig6), className="mb-4"),
             ]),
         dbc.Row([
                 dbc.Col(html.H4(children='Now watching the word frequency of the two dataset'), className="mb-1")

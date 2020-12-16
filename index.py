@@ -47,7 +47,6 @@ navbar = dbc.Navbar(
             dbc.NavbarToggler(id="navbar-toggler2"),
             dbc.Collapse(
                 dbc.Nav(
-                    # right align dropdown menu with ml-auto className
                     [dropdown], className="ml-auto", navbar=True
                 ),
                 id="navbar-collapse2",
@@ -72,7 +71,6 @@ for i in [2]:
         [State(f"navbar-collapse{i}", "is_open")],
     )(toggle_navbar_collapse)
 
-# embedding the navigation bar
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     navbar,
