@@ -36,7 +36,7 @@ def print_table(res):
             "precision": [arr[:,3].mean().round(3), arr[:,1].std().round(3)],}
     df = pd.DataFrame.from_dict(final, orient="index").round(3)
     return df
-
+#
 #-----------------------------------------
 # - Define df -
 filename1 = "data/saveRes/LOGREGmodel.sav"
