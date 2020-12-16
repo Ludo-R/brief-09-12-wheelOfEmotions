@@ -5,10 +5,9 @@ Created on Mon Dec 14 12:12:38 2020
 
 @author: randon
 """
-import plotly.graph_objects as go
+
 import pandas as pd
-import dash_table
-import dash
+
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output

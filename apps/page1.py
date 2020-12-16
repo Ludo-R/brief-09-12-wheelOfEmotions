@@ -9,15 +9,13 @@ Created on Mon Dec 14 12:04:40 2020
 import plotly.graph_objects as go
 import pandas as pd
 import dash_table
-import dash
+
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 import plotly.express as px
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
-from app import app
 
 # ---------------------------------------------------
 # - Import -
