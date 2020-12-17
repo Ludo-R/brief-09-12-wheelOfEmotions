@@ -10,12 +10,13 @@ Created on Mon Dec 14 12:04:54 2020
 import pandas as pd
 import dash_table
 
-import dash_html_components as html
-
-import dash_bootstrap_components as dbc
 import numpy as np
+import dash_html_components as html
+import dash_core_components as dcc
+import dash_bootstrap_components as dbc
 
 import pickle
+
 #-----------------------------------------
 # - Function -
 def print_table(res):
@@ -31,8 +32,11 @@ def print_table(res):
             "precision": [arr[:,3].mean().round(3), arr[:,1].std().round(3)],}
     df = pd.DataFrame.from_dict(final, orient="index").round(3)
     return df
-#
-#-----------------------------------------
+# ---------------------------------------
+# - Test -
+
+
+# -----------------------------------------
 # - Define df -
 filename1 = "data/saveRes/LOGREGmodel.sav"
 res1 = pickle.load(open(filename1, 'rb'))
@@ -53,6 +57,13 @@ res4 = print_table(res4)
 filename5 = "data/saveRes/DTREEmodel.sav"
 res5 = pickle.load(open(filename5, 'rb'))
 res5 = print_table(res5)
+
+filename11 = "data/saveRes/WORLDmodel.sav"
+res11 = pickle.load(open(filename11, 'rb'))
+res11 = print_table(res11)
+
+filename21 = "data/saveRes/roccurve.sav"
+res21 = pickle.load(open(filename21, 'rb'))
 
 #-----------------------------------------
 # - Tabs - 
@@ -157,6 +168,7 @@ tab5_content2 = dbc.Row([html.H4(children='Decision Tree', className="mt-4"),
 # ----------------------------------------
 # - Figure - 
 
+fig21 = res21
 
 #-----------------------------------------
 # - Layout -
@@ -190,15 +202,54 @@ layout = html.Div([
         dbc.Row([
               dbc.Col(html.Img(src="/assets/saveCr/LOGREGcr.png", height="240px"), width=4.5 ),
               dbc.Col(html.Img(src="/assets/saveCr/SGDcr.png", height="240px"),width=4.5),
-              dbc.Col(html.H5(children='As we can see, the distribution of the scores on the different emotions is homogeneous on all the models, we have "Love" and "Surprised" which are lower, so our models give us the same type of result, if we are focused on score, we can deduce that the Stochastic Descent Gradient model is really the best in addition to being the fastest.'),)
-            ], className="mt-4"),
+              dbc.Col([
+                  dbc.Row([html.H5(children='As we can see, the distribution of the scores on the different emotions is homogeneous on all the models, we have "Love" and "Surprised" which are lower')], className="mb-4"),
+                  dbc.Row([html.H5(children='We can see that the score is very good on the Happy and Sadness columns. It is surely because they are the most trained in view of the number')])
+                  ], className="mt-4 mb-4"),
         dbc.Row([
              dbc.Col(html.Img(src="/assets/saveCr/KNNcr.png", height="240px"),width=4.5),
              dbc.Col(html.Img(src="/assets/saveCr/DTREEcr.png", height="240px"),width=4.5),
+             dbc.Col([
+                  dbc.Row([html.H5(children=' if we are focused on score, we can deduce that the Stochastic Descent Gradient model is really the best in addition to being the fastest.')], className="mt-4 mb-4"),
+                  dbc.Row([html.H5(children='Logistic Regression is not far behind. KNNeighbor is really behind and DecisionTree is in the middle')])
+                  ], className="mt-4 mb-4"),
              ], className="mb-4"),
-                dbc.Row([
-        dbc.Col(html.H4(children='Lets compare the best model of each classifier with classification report to determine the best model for the kaggle data'), className="mt-4 mb-4")
+        dbc.Row([
+            dbc.Col([
+                dbc.Row([html.H4(children="Stochastic Gradient Descent ")], className="mb-4"),
+                dbc.Row([html.H5(children="The Best Classifier is Stochastic Gradient descent with a F1 average : 0.9 , and he is one of the faster model with 2,91 seconde.")], className="mb-4"),
+                dbc.Row([html.H5(children="Let's see our ROC curve of our best model to more evaluate. We can see the true positives and false positive which reflect the quality of the model")], className="mb-4"),
+                dbc.Row([html.H5(children="We will use this model for our prediction app.")])
+            ]),
+            dbc.Col(dcc.Graph(id='graph-21',figure=fig21),),
+            ], className="mt-4"),
+        dbc.Row([
+            dbc.Col(html.H4(children="Let's see what happens by trying some models on the Data World dataset"), className="mt-4 mb-4")
         ]),
-        
-    ])
+        dbc.Row([html.H4(children='Result :', className="mt-4"),
+
+            dash_table.DataTable(id='container-button-timestamp',
+            data=res11.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in res11.columns],
+            style_header={'backgroundColor': 'rgb(30, 30, 30)'},
+            style_table={'overflowX': 'auto',
+                         'width' : '1200px',
+                         'margin-bot': '100px'},
+            style_cell={
+                'backgroundColor': 'rgb(50, 50, 50)',
+                'color': 'white',
+                'textAlign':'left',
+                'padding-left':'5px'
+                },
+            css=[ {'selector': '.row', 'rule': 'margin: 0'}]
+            ),
+            html.H6(children='We can see that the results of this second dataset are really bad using the best optimization of the other dataset. There is no point in optimizing these data any further, it will not increase the results to a satisfactory level', className="mt-4 mb-4"),
+            ]),
+        dbc.Row([
+            dbc.Col(html.H4(children="To get better result on this dataset, we should combine the two data set"), className="mt-4 mb-4")
+        ]),
+        html.A("Get the full code of app on my github repositary",
+            href="https://github.com/Ludo-R/brief-09-12-wheelOfEmotions"),
+    ], className="mb-5")
+])
 ])

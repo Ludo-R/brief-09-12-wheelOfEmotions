@@ -15,8 +15,10 @@ from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import SGDClassifier
+
 import nltk
 from app import app
+
 
 # ---------------------------------------------------
 # - Code -
@@ -67,10 +69,11 @@ layout = html.Div([
     Output("output", "children"),
     Input("input1", "value"),)
 def update_output(input1):  
-         
+    
     text = [input1]
     if input1 is None:
         return "Wheel of Emotions"
     else:
         y_pred = pipe91.predict(text)
         return u'Emotion : {}'.format(y_pred)
+    

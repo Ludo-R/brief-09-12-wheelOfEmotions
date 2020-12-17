@@ -209,5 +209,7 @@ layout = html.Div([
         dbc.Row([
                 dbc.Col(html.H6(children='By taking the words that appear more than 500 times in the text, we realize that most of the words are linked words which cannot express any emotions, and that in the two sets of data, we must remove them with stopword if we want to make our model relevant.'), className="mb-4")
             ]),
-        ]), 
+        html.A("Get the full code of app on my github repositary",
+               href="https://github.com/Ludo-R/brief-09-12-wheelOfEmotions")
+        ], className="mb-5"), 
     ])
